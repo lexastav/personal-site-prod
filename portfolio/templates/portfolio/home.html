@@ -5,6 +5,9 @@
     <title>HomePage</title>
 </head>
 <h1>Alexey's Portfolio</h1>
+{% load static %}
+<a href="{% static 'portfolio/E6715_Maximus_IV_Extreme-Z.pdf'%}">Resume</a>
+<img src="{% static 'portfolio/myphoto.jpg' %}">
 <body>
 {% for project in projects %}
     <h2>{{ project.title }}</h2>
