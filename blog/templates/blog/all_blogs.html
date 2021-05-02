@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog</title>
-</head>
-<h1>Alexey's blog</h1>
-<body>
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+    <title>Блог</title>
+
+<h1>Личный блог</h1>
+  <br>
+<h2>Написанных статей: {{ blogs.count }}</h2>
 {% for blog in blogs %}
-    <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
-    <h5>{{ blog.date }}</h5>
-    <p>{{ blog.text }}</p>
+    <div class="row justify-content-center my-3">
+      <div class="col-md-10">
+      <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+    <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
+    <h4>{{ blog.text|striptags|truncatechars:200 }}</h4>
+      </div>
+    </div>
 
 {% endfor %}
-</body>
-</html>
+
+{% endblock %}
