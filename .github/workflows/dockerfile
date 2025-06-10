@@ -4,6 +4,19 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        zlib1g-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libtiff-dev \
+        libwebp-dev \
+        liblcms2-dev \
+        tcl-dev \
+        tk-dev \
+        freetype*
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN python manage.py collectstatic --noinput
