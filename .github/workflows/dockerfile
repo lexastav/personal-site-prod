@@ -19,6 +19,7 @@ RUN apt-get update && \
         libfreetype6-dev \
         libjpeg-turbo8-dev
 
+RUN pip install pillow --only-binary :all:
 
 RUN pip install --no-cache-dir -r requirements.txt
 
